@@ -2,39 +2,15 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { extractQueryString } from "./helpers/utils";
 
-import Search from './components/Search';
-import ResultList from './components/ResultList';
 
 import store from './store';
 
 
-class App extends Component {
+class TrackList extends Component {
 
     componentWillMount = () => {
 
-        const token = this.getToken();
-
-        console.log("token ->", token);
-
-        if (!token) {
-            console.log("3");
-
-            this.redirectToSpotify();
-        } else {
-            console.log("4");
-
-            if (window.location.hash.length === 0) this.validateExpireToken(token);
-
-            // this.clearHashToken();
-
-            localStorage.setItem(
-                "authorization",
-                JSON.stringify({
-                    ...token,
-                    authorizationTime: new Date()
-                })
-            );
-        }
+        
     };
 
     validateExpireToken = (token) => {
@@ -87,4 +63,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default TrackList;
