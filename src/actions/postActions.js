@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST } from './types';
+import { FETCH_POSTS, FETCH_TRACKS, NEW_POST } from './types';
 
 var timeout = null;
 
@@ -32,6 +32,26 @@ export const fetchPosts = (search) => dispatch => {
     //             payload: posts
     //         }));
 
+}
+
+export const fetchTracks = (albumid) => dispatch => {
+
+    if (albumid !== '') {
+        const auth = JSON.parse(localStorage.getItem('authorization'));
+        const url = process.env.REACT_APP_SPOTIFY_API_URL + 'albums/' + albumid;
+        
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + auth.access_token
+                }
+            })
+            .then(res => res.json())
+            .then(tracks => dispatch({
+                type: FETCH_TRACKS,
+                payload: tracks
+            }));
+    }
 }
 
 export const createPost = postData => dispatch => {

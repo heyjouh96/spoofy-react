@@ -5,8 +5,8 @@ import { extractQueryString } from "./helpers/utils";
 import Search from './components/Search';
 import ResultList from './components/ResultList';
 
+import Routes from './routes/routes';
 import store from './store';
-
 
 class App extends Component {
 
@@ -22,10 +22,10 @@ class App extends Component {
             this.redirectToSpotify();
         } else {
             console.log("4");
-
+            // this.redirectToSpotify();
             if (window.location.hash.length === 0) this.validateExpireToken(token);
 
-            // this.clearHashToken();
+            this.clearHashToken();
 
             localStorage.setItem(
                 "authorization",
@@ -37,16 +37,41 @@ class App extends Component {
         }
     };
 
-    validateExpireToken = (token) => {
-        const now = new Date();
-        const expireDate = new Date(
-            new Date(token.authorizationTime).setSeconds(3600)
+    clearHashToken = () => {
+        history.pushState(
+            "initial",
+            document.title,
+            window.location.href.split("#")[0]
         );
-        const keepValid = now <= expireDate;
-        if (!keepValid) {
-            this.redirectToSpotify();
-            console.log("invalid");
-        }
+    };
+
+    // validateExpireToken = (token) => {
+    //     const now = new Date();
+    //     const expireDate = new Date(
+    //         new Date(token.authorizationTime).setSeconds(3600)
+    //     );
+    //     const keepValid = now <= expireDate;
+    //     if (!keepValid) {
+    //         this.redirectToSpotify();
+    //         console.log("invalid");
+    //     }
+    // };
+
+    validateExpireToken = token => {
+        const now = new Date();
+        const expire = new Date();
+    
+        expire.setSeconds(
+          expire.getSeconds() + parseInt(token.expires_in)
+        );
+    
+        const expireDate = token.authorizationTime
+          ? new Date(new Date(new Date(token.authorizationTime)))
+          : expire;
+    
+        const valid = now <= expireDate;
+    
+        return valid;
     };
 
     redirectToSpotify = () => {
@@ -75,13 +100,16 @@ class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <div>
+                {/* <div>
                     <h1>Spotify</h1>
 
                     <Search />
                     <hr />
                     <ResultList />
-                </div>
+                </div> */}
+
+                <Routes />
+
             </Provider>
         );
     }

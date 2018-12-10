@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions/postActions';
 import Album from '../Album';
 
 class ResultList extends Component {
