@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Album from '../Album';
+import { Link } from 'react-router-dom'
 
 class ResultList extends Component {
 
@@ -22,7 +23,9 @@ class ResultList extends Component {
     render() {
         
         const albums = this.state.albums.map(item => (
-            <Album key={item.id} name={item.name} image={item.images[1].url} />
+            <Link to={`/${item.id}`}>
+                <Album key={item.id} name={item.name} image={item.images[1].url} />
+            </Link>
         ));
 
         return (

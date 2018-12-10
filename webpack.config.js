@@ -34,11 +34,13 @@ module.exports = () => {
                         }
                     }
                 }, {
-                    test: /\.css$/,
-                    use: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: ['css-loader']
-                    })
+                    // test: /\.css$/,
+                    // use: ExtractTextPlugin.extract({
+                    //     fallback: 'style-loader',
+                    //     use: ['css-loader']
+                    // })
+                    test:/\.(s*)css$/,
+                    use:['style-loader','css-loader', 'sass-loader']
                 },
                 {
                     test: /\.(png|jpg|gif)$/,
@@ -69,10 +71,10 @@ module.exports = () => {
                 filename: 'css/style.css'
             }),
             new webpack.DefinePlugin(envKeys),
-            new CopyWebpackPlugin([
-                // relative path is from src
-                { from: './src/assets/images/favicon.png', to: 'assets/images/favicon.png' }, // <- your path to favicon
-              ])
+            // new CopyWebpackPlugin([
+            //     // relative path is from src
+            //     { from: './src/assets/images/favicon.png', to: 'assets/images/favicon.png' }, // <- your path to favicon
+            //   ])
         ]
     }
 }
