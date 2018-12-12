@@ -1,2 +1,29 @@
-$base-black: #000;
-$font-white: #fff;
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$background: #161616;
+$font-color1: #999999;
+$font-color2: #FAFAFA;
+$font-color3: #FFF;
+$black: #000;
+
+@mixin font-title() {
+    font-weight: bold;
+    font-size: 48px;
+    color: $font-color1;
+}
+
+@mixin font-h2() {
+    letter-spacing: 1px;
+    font-size: 24px;
+    color: $font-color2;
+}
+
+@mixin album-title() {
+    font-size: 18px;
+    color: $font-color2;
+}
+
+@mixin album-artist() {
+    font-size: 14px;
+    color: $font-color1;
+}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import '../../style/components/ResultList.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Album from '../Album';
@@ -10,16 +11,19 @@ class ResultList extends Component {
         let albums = '';
 
         if (this.props.posts.hasOwnProperty('albums')) {
+            console.log(this.props.posts);
             albums = this.props.posts.albums.items.map(item => (
                 <Link to={`/${item.id}`} key={item.id}>
-                    <Album key={item.id} name={item.name} image={item.images[1].url} />
+                    <Album key={item.id}
+                            name={item.name}
+                            image={item.images[1].url}
+                            artist={item.artists[0].name} />
                 </Link>
             ));
         }
 
         return (
             <div>
-                <h2>Resultados</h2>
                 {albums}
             </div>
         )

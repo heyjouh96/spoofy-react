@@ -1,0 +1,17 @@
+@import '../base/colors.scss';
+
+input.searchAlbum {
+    @include font-title;
+    width: 100%;
+    padding: 10px 0px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid $font-color1;   
+    &:focus {
+        outline: none;
+    }
+}
+
+h2 {
+    @include font-h2;
+ }

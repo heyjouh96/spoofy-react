@@ -3,10 +3,12 @@ import React from 'react';
 const Album = (props) => {
 
     return (
-        <div>
+        <div class="album">
             <img src={props.image} alt={props.name} />
 
-            <h3>{props.name}</h3>
+            <span className="album-title">{props.name}</span>
+
+            <span className="album-artist">{props.artist}</span>
 
         </div>
     )

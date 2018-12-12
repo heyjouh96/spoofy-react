@@ -12,7 +12,6 @@ class AlbumList extends Component {
                 <h1>Spotify</h1>
 
                 <Search /> 
-                <hr />
                 <ResultList />
             </div>
         );

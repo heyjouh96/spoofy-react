@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style/components/App.scss';
 import { Provider } from 'react-redux';
 import { extractQueryString } from "./helpers/utils";
 
