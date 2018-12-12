@@ -6,27 +6,16 @@ import { Link } from 'react-router-dom'
 
 class ResultList extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            albums: []
-        }
-    }
-
-    componentWillReceiveProps(nextProps) {
-        if(nextProps.posts) {
-            this.setState({albums: nextProps.posts.albums.items});
-            console.log("state ->", this.state);
-        }
-    }
-
     render() {
-        
-        const albums = this.state.albums.map(item => (
-            <Link to={`/${item.id}`}>
-                <Album key={item.id} name={item.name} image={item.images[1].url} />
-            </Link>
-        ));
+        let albums = '';
+
+        if (this.props.posts.hasOwnProperty('albums')) {
+            albums = this.props.posts.albums.items.map(item => (
+                <Link to={`/${item.id}`} key={item.id}>
+                    <Album key={item.id} name={item.name} image={item.images[1].url} />
+                </Link>
+            ));
+        }
 
         return (
             <div>
@@ -38,7 +27,7 @@ class ResultList extends Component {
 }
 
 ResultList.propTypes = {
-    posts: PropTypes.array.isRequired,
+    posts: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({

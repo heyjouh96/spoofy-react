@@ -1,7 +1,7 @@
 import { FETCH_POSTS, FETCH_TRACKS, NEW_POST } from '../actions/types';
 
 const initialState = {
-    items: [],
+    items: {},
     item: {},
     tracks: {}
 }

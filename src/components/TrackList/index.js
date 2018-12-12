@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import '../../style/components/TrackList.css';
+import '../../style/components/TrackList.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { fetchTracks } from '../../actions/postActions';
