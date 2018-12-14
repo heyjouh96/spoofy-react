@@ -3,7 +3,7 @@ import React from 'react';
 const Album = (props) => {
 
     return (
-        <div class="album">
+        <div className="album">
             <img src={props.image} alt={props.name} />
 
             <span className="album-title">{props.name}</span>

@@ -24,14 +24,6 @@ export const fetchPosts = (search) => dispatch => {
         }
     }, 500);
 
-    // fetch('https://jsonplaceholder.typicode.com/posts')
-    //     .then(res => res.json())
-    //     .then(posts => 
-    //         dispatch({
-    //             type: FETCH_POSTS,
-    //             payload: posts
-    //         }));
-
 }
 
 export const fetchTracks = (albumid) => dispatch => {
