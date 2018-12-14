@@ -4,8 +4,28 @@ body {
     font-family: 'Roboto', sans-serif;
     background: $background;
     color: $font-color1;
-    padding: 20px;
 }
+
+.wrapper {
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+}
+
+.side {
+    width: 20%;
+    height: 100px;
+}
+
+.main-content {
+    width: 80%;
+    border-right: 1px solid #555;
+}
+
+
 
 
 

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import '../../style/components/ResultList.scss';
+import '../../style/components/AlbumList.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Album from '../Album';
 import { Link } from 'react-router-dom'
+import Album from './Album.js';
 
 class ResultList extends Component {
 
@@ -13,17 +13,25 @@ class ResultList extends Component {
         if (this.props.posts.hasOwnProperty('albums')) {
             console.log(this.props.posts);
             albums = this.props.posts.albums.items.map(item => (
-                <Link to={`/${item.id}`} key={item.id}>
-                    <Album key={item.id}
-                            name={item.name}
-                            image={item.images[1].url}
-                            artist={item.artists[0].name} />
-                </Link>
+                <div className="album">
+                    <Link to={`/${item.id}`} key={item.id}>
+                        <Album key={item.id}
+                                name={item.name}
+                                image={item.images[1].url}
+                                artist={item.artists[0].name} />
+                    </Link>
+                </div>
             ));
         }
 
         return (
-            <div>
+            <div className="result-list">
+
+                <div className="item"></div>
+                <div className="item"></div>
+                <div className="item"></div>
+                <div className="item"></div>
+
                 {albums}
             </div>
         )

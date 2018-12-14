@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Search from '../Search';
-import ResultList from '../ResultList';
+import ResultList from './ResultList.js';
 
 
 class AlbumList extends Component {
@@ -9,9 +9,8 @@ class AlbumList extends Component {
     render() {
         return (
             <div>
-                <h1>Spotify</h1>
-
                 <Search /> 
+
                 <ResultList />
             </div>
         );

@@ -1,0 +1,47 @@
+@import '../base/colors.scss';
+
+.result-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
+    flex-flow: wrap;
+    .item {
+        width: 200px;
+        height: 200px;
+        background: blue;
+        margin-bottom: 5px;
+    }
+    .album {
+        width: 200px;
+        height: 300px;
+        padding: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+        img {
+           width: 200px;
+           height: 200px; 
+        }
+        span.album-title {
+            @include album-title;
+            display: block;
+            margin: 7px 0px;
+        }
+        span.album-artist {
+            @include album-artist;
+            display: block;
+        }
+        &:hover {
+            background-color: $font-color2;
+            span {
+                color: $black;
+            }
+        }
+    }
+}
+
+
+
+
+

@@ -18,7 +18,15 @@ class App extends Component {
         return (
             <Provider store={store}>
 
-                <Routes />
+                <div className="wrapper">
+                    <div className="side">
+                        <h1>Spotify</h1>
+                    </div>
+                    
+                    <div className="main-content">
+                        <Routes />
+                    </div>
+                </div>
 
             </Provider>
         );
