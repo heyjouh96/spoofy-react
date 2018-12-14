@@ -34,7 +34,8 @@ class Search extends Component {
 		const title = this.state.search == '' ? 'Álbuns buscados recentemente' : `Resultados encontrados para "${this.state.search}"`;
 
 		return (
-			<div className="container">
+			<div className="search">
+				<span>Busque por álbuns, artistas ou músicas</span>
 				{this.renderInput()}
 
 

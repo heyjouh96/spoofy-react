@@ -20,7 +20,7 @@ class App extends Component {
 
                 <div className="wrapper">
                     <div className="side">
-                        <h1>Spotify</h1>
+                        <img src={require('./images/logo.png')} alt="logo spotify" />
                     </div>
                     
                     <div className="main-content">

@@ -13,8 +13,8 @@ class ResultList extends Component {
         if (this.props.posts.hasOwnProperty('albums')) {
             console.log(this.props.posts);
             albums = this.props.posts.albums.items.map(item => (
-                <div className="album">
-                    <Link to={`/${item.id}`} key={item.id}>
+                <div className="album" key={item.id}>
+                    <Link to={`/${item.id}`}>
                         <Album key={item.id}
                                 name={item.name}
                                 image={item.images[1].url}
@@ -26,11 +26,6 @@ class ResultList extends Component {
 
         return (
             <div className="result-list">
-
-                <div className="item"></div>
-                <div className="item"></div>
-                <div className="item"></div>
-                <div className="item"></div>
 
                 {albums}
             </div>

@@ -1,6 +1,48 @@
 @import '../base/colors.scss';
 
+a.go-back {
+    display: block;
+    color: $font-color2;
+    text-decoration: none;
+    padding: 20px 0px;
+    i {
+        font-style: normal;
+        font-size: 30px;
+    }
+}
 
+.track-list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .album-info {
+        text-align: center;
+        h2 {
+            @include font-h2;
+        }
+    }
+    .album-tracks {
+        width: 100%;
+        ol {
+            margin-top: 0px;
+            li {
+                margin-bottom: 15px;
+                &::before {
+                    margin-right: 20px;
+                    color: #000;
+                }
+                .track-length {
+                    float: right    
+                }
+                .track-name {
+                    color: $font-color2;
+                    margin-left: 20px
+                }
+            }   
+        }
+    }
+}
 
 
 

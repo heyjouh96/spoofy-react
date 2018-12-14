@@ -8,24 +8,40 @@ body {
 
 .wrapper {
     margin: 0 auto;
-    padding: 20px;
+    padding: 50px;
     width: 100%;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
+    .side {
+        width: 15%;
+        height: 100px;
+        img {
+            width: 100px;
+        }
+    }
+    
+    .main-content {
+        width: 85%;
+    }
 }
 
-.side {
-    width: 20%;
-    height: 100px;
+
+@media screen and (max-width: 600px) {
+    
+    .wrapper {
+        display: none;
+        flex-direction: column;
+        .side {
+            width: 100%;
+        }
+    
+        .main-content {
+            width: 100%;
+        }
+    }
+    
 }
-
-.main-content {
-    width: 80%;
-    border-right: 1px solid #555;
-}
-
-
 
 
 
