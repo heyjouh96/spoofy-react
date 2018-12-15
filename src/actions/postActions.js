@@ -6,22 +6,20 @@ export const fetchPosts = (search) => dispatch => {
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
-        if (search !== '') {
-            const auth = JSON.parse(localStorage.getItem('authorization'));
-            const url = process.env.REACT_APP_SPOTIFY_API_URL + 'search?q=' + search + '&type=album';
-            
-            fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Bearer ' + auth.access_token
-                    }
-                })
-                .then(res => res.json())
-                .then(posts => dispatch({
-                    type: FETCH_POSTS,
-                    payload: posts
-                }));
-        }
+        const auth = JSON.parse(localStorage.getItem('authorization'));
+        const url = process.env.REACT_APP_SPOTIFY_API_URL + 'search?q=' + search + '&type=album';
+        
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + auth.access_token
+                }
+            })
+            .then(res => res.json())
+            .then(posts => dispatch({
+                type: FETCH_POSTS,
+                payload: posts
+            }));
     }, 500);
 
 }

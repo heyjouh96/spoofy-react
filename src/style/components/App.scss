@@ -20,18 +20,14 @@ body {
             width: 100px;
         }
     }
-    
     .main-content {
         width: 85%;
     }
 }
 
-
-@media screen and (max-width: 600px) {
-    
+@media (max-width: 768px) {
     .wrapper {
-        display: none;
-        flex-direction: column;
+        display: block;
         .side {
             width: 100%;
         }
@@ -41,6 +37,12 @@ body {
         }
     }
     
+}
+
+@media (max-width: 400px) {
+    .wrapper {
+        padding: 20px;
+    }
 }
 
 

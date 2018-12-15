@@ -7,26 +7,43 @@ import Album from './Album.js';
 
 class ResultList extends Component {
 
+    componentWillMount() {
+        if(window.audio) {
+            window.audio.pause();
+        }
+    }
+
     render() {
         let albums = '';
 
+        // verifica existe resultados da pesquisa
         if (this.props.posts.hasOwnProperty('albums')) {
             console.log(this.props.posts);
             albums = this.props.posts.albums.items.map(item => (
                 <div className="album" key={item.id}>
-                    <Link to={`/${item.id}`}>
-                        <Album key={item.id}
-                                name={item.name}
-                                image={item.images[1].url}
-                                artist={item.artists[0].name} />
-                    </Link>
+                    <Album 
+                        id={item.id}
+                        name={item.name}
+                        image={item.images[1].url}
+                        artist={item.artists[0].name} />
+                </div>
+            ));
+        } else if (JSON.parse(localStorage.getItem("recent")) !== null) { // verifica se existe albuns recentes no localStorage
+            var recent = JSON.parse(localStorage.getItem("recent"));
+            console.log("recent -> ", recent);
+            albums = recent.map(item => (
+                <div className="album" key={item.id}>
+                        <Album 
+                            id={item.id}
+                            name={item.name}
+                            image={item.image}
+                            artist={item.artist} />
                 </div>
             ));
         }
 
         return (
             <div className="result-list">
-
                 {albums}
             </div>
         )

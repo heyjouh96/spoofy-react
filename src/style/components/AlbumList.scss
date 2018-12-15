@@ -44,8 +44,14 @@
     }
 }
 
-
-
+@media (max-width: 768px) {
+    .result-list {
+        .album {
+            width: 300px;
+            height: 250px;
+        }
+    }
+}
 
 
 

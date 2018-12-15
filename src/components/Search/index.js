@@ -49,8 +49,4 @@ Search.propTypes = {
 	fetchPosts: PropTypes.func.isRequired,
 }
 
-// const mapStateToProps = state => ({
-// 	posts: state.posts.items
-// })
-
 export default connect(null, { fetchPosts })(Search);

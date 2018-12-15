@@ -85,7 +85,32 @@ const redirectToSpotify = () => {
     window.location.href = `${url}authorize?client_id=${clientId}&response_type=token&redirect_uri=${"http://localhost:8080"}`;
 };
 
+const setRecent = album => {
+    var albuns = [], exist = [];
+    var recent = JSON.parse(localStorage.getItem('recent'));
+
+    if (recent !== null) {
+        exist = recent.filter(item => item.id === album.id);
+        albuns = recent;
+    } 
+
+    if (exist.length === 0) {
+        albuns.push(
+            {
+                id: album.id,
+                name: album.name,
+                image: album.images[1].url,
+                artist: album.artists[0].name,
+            }
+        );
+
+        localStorage.setItem(
+            "recent", JSON.stringify(albuns) 
+        );
+    }
+}
+
 
 export {
-    extractQueryString, getToken, tokenValidation
+    extractQueryString, getToken, tokenValidation, setRecent
 };

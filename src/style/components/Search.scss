@@ -22,3 +22,16 @@
         @include font-h2;
      }
 }
+
+@media (max-width: 500px) {
+    .search {
+        text-align: center;
+        h2 {
+            font-size: 20px;
+        }
+        input.searchAlbum {
+            margin-top: 5px;
+            font-size: 28px;
+        }
+    }
+}
