@@ -56,7 +56,7 @@ class TrackList extends Component {
 
         console.log("PROPS ->", this.props.tracks);
         
-        var tracks = '', name = '', img = '', artist = '';
+        var tracks = '', name = '', img = '', artist = '', artistid = '';
         
         if (this.props.tracks.hasOwnProperty('tracks')) {
             tracks = this.props.tracks.tracks.items.map(track => (
@@ -69,9 +69,10 @@ class TrackList extends Component {
                     <div className="track-name">{track.name}</div>
                 </li>
             ));
-            img = this.props.tracks.images[1].url;
+            img = this.props.tracks.images.length !== 0 ? this.props.tracks.images[1].url : require('../../images/placeholder.png');
             name = this.props.tracks.name;
             artist = this.props.tracks.artists[0].name;
+            artistid = this.props.tracks.artists[0].id;
         } 
 
         return (
@@ -84,8 +85,10 @@ class TrackList extends Component {
 
                     <div className="album-info">
                         <img src={img} alt={name} className="album-image"/>
-                        <h2>{name}</h2>  
-                        <span>{artist}</span>  
+                        <h2>{name}</h2>
+                        <Link to={`/artist/${artistid}`}>  
+                            <span>{artist}</span>  
+                        </Link>
                     </div>
                     
                     <div className="album-tracks">

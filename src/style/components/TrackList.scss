@@ -21,6 +21,10 @@ a.go-back {
         h2 {
             @include font-h2;
         }
+        a {
+            @include album-artist;
+            text-decoration: none;
+        }
     }
     .album-tracks {
         width: 500px;

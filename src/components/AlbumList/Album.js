@@ -6,7 +6,7 @@ const Album = (props) => {
     return (
         <div>
             <Link to={`/${props.id}`}>
-                <img src={props.image} alt={props.name} />
+                <img src={props.image !== null ? props.image : require('../../images/placeholder.png')} alt={props.name} />
             </Link>
             
             <Link to={`/${props.id}`}>

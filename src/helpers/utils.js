@@ -99,7 +99,7 @@ const setRecent = album => {
             {
                 id: album.id,
                 name: album.name,
-                image: album.images[1].url,
+                image: album.images.length !== 0 ? album.images[1].url : null,
                 artist: album.artists[0].name,
                 artistid: album.artists[0].id
             }

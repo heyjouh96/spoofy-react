@@ -11,6 +11,7 @@ class ResultList extends Component {
         if(window.audio) {
             window.audio.pause();
         }
+
     }
 
     render() {
@@ -18,13 +19,13 @@ class ResultList extends Component {
 
         // verifica existe resultados da pesquisa
         if (this.props.posts.hasOwnProperty('albums')) {
-            console.log("hooo", this.props.posts);
+            console.log("results -> ", this.props.posts);
             albums = this.props.posts.albums.items.map(item => (
                 <div className="album" key={item.id}>
                     <Album 
                         id={item.id}
                         name={item.name}
-                        image={item.images[1].url}
+                        image={item.images.length !== 0 ? item.images[1].url : null}
                         artist={item.artists[0].name}
                         artistid={item.artists[0].id} />
                 </div>
