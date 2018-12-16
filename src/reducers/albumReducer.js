@@ -1,4 +1,4 @@
-import { FETCH_POSTS, FETCH_TRACKS, FETCH_ARTIST_ALBUMS } from '../actions/types';
+import { FETCH_ALBUMS, FETCH_TRACKS, FETCH_ARTIST_ALBUMS } from '../actions/types';
 
 const initialState = {
     items: {},
@@ -9,7 +9,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
     switch(action.type) {
-        case FETCH_POSTS:
+        case FETCH_ALBUMS:
             return {
                 ...state,
                 items: action.payload

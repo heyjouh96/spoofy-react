@@ -1,8 +1,8 @@
-import { FETCH_POSTS, FETCH_TRACKS, FETCH_ARTIST_ALBUMS } from './types';
+import { FETCH_ALBUMS, FETCH_TRACKS, FETCH_ARTIST_ALBUMS } from './types';
 
 var timeout = null;
 
-export const fetchPosts = (search) => dispatch => {
+export const fetchAlbums = (search) => dispatch => {
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
@@ -17,7 +17,7 @@ export const fetchPosts = (search) => dispatch => {
             })
             .then(res => res.json())
             .then(posts => dispatch({
-                type: FETCH_POSTS,
+                type: FETCH_ALBUMS,
                 payload: posts
             }));
     }, 500);

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../style/components/Search.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchPosts } from '../../actions/postActions';
+import { fetchAlbums } from '../../actions/mainActions';
 
 
 const Input = (props) => {
@@ -26,7 +26,7 @@ class Search extends Component {
 
 	onInput(event) {
 		this.setState({search: event.target.value});
-		this.props.fetchPosts(event.target.value);
+		this.props.fetchAlbums(event.target.value);
 	}
 
 	render() {
@@ -46,7 +46,7 @@ class Search extends Component {
 }
 
 Search.propTypes = {
-	fetchPosts: PropTypes.func.isRequired,
+	fetchAlbums: PropTypes.func.isRequired,
 }
 
-export default connect(null, { fetchPosts })(Search);
+export default connect(null, { fetchAlbums })(Search);

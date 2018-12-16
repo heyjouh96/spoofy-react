@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../style/components/TrackList.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchTracks } from '../../actions/postActions';
+import { fetchTracks } from '../../actions/mainActions';
 import { Link } from 'react-router-dom';
 import { setRecent } from "../../helpers/utils";
 

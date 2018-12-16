@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../style/components/AlbumList.scss';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { fetchArtistAlbums } from '../../actions/postActions';
+import { fetchArtistAlbums } from '../../actions/mainActions';
 import { Link } from 'react-router-dom';
 import Album from '../AlbumList/Album.js';
 
