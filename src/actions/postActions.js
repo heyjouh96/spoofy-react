@@ -1,4 +1,4 @@
-import { FETCH_POSTS, FETCH_TRACKS, NEW_POST } from './types';
+import { FETCH_POSTS, FETCH_TRACKS, FETCH_ARTIST_ALBUMS } from './types';
 
 var timeout = null;
 
@@ -44,20 +44,24 @@ export const fetchTracks = (albumid) => dispatch => {
     }
 }
 
-export const createPost = postData => dispatch => {
-    console.log("called");
-    fetch('https://jsonplaceholder.typicode.com/posts', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(postData)
-        })
+export const fetchArtistAlbums = (artistid) => dispatch => {
+    
+    console.log("chegou aqui -> id: ",artistid);
+    if (artistid !== '') {
+        const auth = JSON.parse(localStorage.getItem('authorization'));
+        const url = process.env.REACT_APP_SPOTIFY_API_URL + 'artists/' + artistid + '/albums';
+        
+        fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + auth.access_token
+                }
+            })
             .then(res => res.json())
-            .then(post => 
-                dispatch({
-                    type: NEW_POST,
-                    payload: post
-            }));    
+            .then(artist => dispatch({
+                type: FETCH_ARTIST_ALBUMS,
+                payload: artist
+            }));
+    }
 }
 

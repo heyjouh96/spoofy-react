@@ -13,8 +13,9 @@ const Album = (props) => {
                 <span className="album-title">{props.name}</span>
             </Link>
 
-            <span className="album-artist">{props.artist}</span>
-
+            <Link to={`/artist/${props.artistid}`}>
+                <span className="album-artist">{props.artist}</span>
+            </Link>
         </div>
     )
 }

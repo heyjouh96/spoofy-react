@@ -101,6 +101,7 @@ const setRecent = album => {
                 name: album.name,
                 image: album.images[1].url,
                 artist: album.artists[0].name,
+                artistid: album.artists[0].id
             }
         );
 

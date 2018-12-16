@@ -1,9 +1,10 @@
-import { FETCH_POSTS, FETCH_TRACKS, NEW_POST } from '../actions/types';
+import { FETCH_POSTS, FETCH_TRACKS, FETCH_ARTIST_ALBUMS } from '../actions/types';
 
 const initialState = {
     items: {},
     item: {},
-    tracks: {}
+    tracks: {},
+    artist_albums: {}
 }
 
 export default function(state = initialState, action) {
@@ -18,10 +19,10 @@ export default function(state = initialState, action) {
                 ...state,
                 tracks: action.payload
             };
-        case NEW_POST:
+        case FETCH_ARTIST_ALBUMS:
             return {
                 ...state,
-                item: action.payload 
+                artist_albums: action.payload 
             };
         default:    
             return state;                

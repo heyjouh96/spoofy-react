@@ -18,14 +18,15 @@ class ResultList extends Component {
 
         // verifica existe resultados da pesquisa
         if (this.props.posts.hasOwnProperty('albums')) {
-            console.log(this.props.posts);
+            console.log("hooo", this.props.posts);
             albums = this.props.posts.albums.items.map(item => (
                 <div className="album" key={item.id}>
                     <Album 
                         id={item.id}
                         name={item.name}
                         image={item.images[1].url}
-                        artist={item.artists[0].name} />
+                        artist={item.artists[0].name}
+                        artistid={item.artists[0].id} />
                 </div>
             ));
         } else if (JSON.parse(localStorage.getItem("recent")) !== null) { // verifica se existe albuns recentes no localStorage
@@ -37,7 +38,8 @@ class ResultList extends Component {
                             id={item.id}
                             name={item.name}
                             image={item.image}
-                            artist={item.artist} />
+                            artist={item.artist}
+                            artistid={item.artist[0].id} />
                 </div>
             ));
         }
