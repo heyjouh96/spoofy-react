@@ -2,12 +2,24 @@ import { FETCH_ALBUMS, FETCH_TRACKS, FETCH_ARTIST_ALBUMS } from './types';
 
 var timeout = null;
 
-export const fetchAlbums = (search) => dispatch => {
+export const fetchAlbums = (search) => (dispatch, getState) => {
     clearTimeout(timeout);
 
     timeout = setTimeout(() => {
         const auth = JSON.parse(localStorage.getItem('authorization'));
         const url = process.env.REACT_APP_SPOTIFY_API_URL + 'search?q=' + search + '&type=album';
+        const state = getState();
+
+        const cachedResult = state.albumReducer.cache.filter(item => item.search === search)[0];
+        
+        if (cachedResult) {
+            dispatch({
+                type: FETCH_ALBUMS,
+                payload: cachedResult.payload,
+                search: cachedResult.search
+            });
+            return;
+        }
         
         fetch(url, {
                 method: 'GET',
@@ -18,7 +30,8 @@ export const fetchAlbums = (search) => dispatch => {
             .then(res => res.json())
             .then(posts => dispatch({
                 type: FETCH_ALBUMS,
-                payload: posts
+                payload: posts,
+                search: search
             }));
     }, 500);
 
@@ -46,7 +59,6 @@ export const fetchTracks = (albumid) => dispatch => {
 
 export const fetchArtistAlbums = (artistid) => dispatch => {
     
-    console.log("chegou aqui -> id: ",artistid);
     if (artistid !== '') {
         const auth = JSON.parse(localStorage.getItem('authorization'));
         const url = process.env.REACT_APP_SPOTIFY_API_URL + 'artists/' + artistid + '/albums';

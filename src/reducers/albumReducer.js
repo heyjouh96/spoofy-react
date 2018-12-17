@@ -4,15 +4,19 @@ const initialState = {
     items: {},
     item: {},
     tracks: {},
-    artist_albums: {}
+    artist_albums: {},
+    search: '',
+    cache: []
 }
 
 export default function(state = initialState, action) {
     switch(action.type) {
         case FETCH_ALBUMS:
+            state.cache.push({ search: action.search, payload: action.payload });
             return {
                 ...state,
-                items: action.payload
+                items: action.payload,
+                search: action.search
             };
         case FETCH_TRACKS:
             return {

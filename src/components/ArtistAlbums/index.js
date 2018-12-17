@@ -10,13 +10,10 @@ class ArtistAlbums extends Component {
     
     componentWillMount() {
         this.props.fetchArtistAlbums(this.props.match.params.id);
-        console.log("tracks will ->", this.props.artist_albums);
     }
 
     render() {
 
-        console.log("PROPS ->", this.props.artist_albums);
-        
         let albums = '', artist = '';
 
         // verifica existe resultados da pesquisa
@@ -54,7 +51,7 @@ ArtistAlbums.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    artist_albums: state.posts.artist_albums
+    artist_albums: state.albumReducer.artist_albums
 });
 
 export default connect(mapStateToProps, { fetchArtistAlbums })(ArtistAlbums);

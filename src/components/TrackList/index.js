@@ -10,7 +10,6 @@ class TrackList extends Component {
     
     componentWillMount() {
         this.props.fetchTracks(this.props.match.params.id);
-        console.log("tracks will ->", this.props.tracks);
     }
 
     componentDidUpdate() {
@@ -54,8 +53,6 @@ class TrackList extends Component {
 
     render() {
 
-        console.log("PROPS ->", this.props.tracks);
-        
         var tracks = '', name = '', img = '', artist = '', artistid = '';
         
         if (this.props.tracks.hasOwnProperty('tracks')) {
@@ -69,7 +66,7 @@ class TrackList extends Component {
                     <div className="track-name">{track.name}</div>
                 </li>
             ));
-            img = this.props.tracks.images.length !== 0 ? this.props.tracks.images[1].url : require('../../images/placeholder.png');
+            img = this.props.tracks.images.length !== 0 ? <img src={this.props.tracks.images[1].url} alt={name}/> : '';
             name = this.props.tracks.name;
             artist = this.props.tracks.artists[0].name;
             artistid = this.props.tracks.artists[0].id;
@@ -84,7 +81,9 @@ class TrackList extends Component {
                 <div className="track-list">
 
                     <div className="album-info">
-                        <img src={img} alt={name} className="album-image"/>
+                        <div className="album-image">
+                            {img}
+                        </div>
                         <h2>{name}</h2>
                         <Link to={`/artist/${artistid}`}>  
                             <span>{artist}</span>  
@@ -110,7 +109,7 @@ TrackList.propTypes = {
 }
 
 const mapStateToProps = state => ({
-    tracks: state.posts.tracks
+    tracks: state.albumReducer.tracks
 });
 
 export default connect(mapStateToProps, { fetchTracks })(TrackList);

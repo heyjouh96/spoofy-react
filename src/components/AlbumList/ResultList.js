@@ -18,9 +18,8 @@ class ResultList extends Component {
         let albums = '';
 
         // verifica existe resultados da pesquisa
-        if (this.props.posts.hasOwnProperty('albums')) {
-            console.log("results -> ", this.props.posts);
-            albums = this.props.posts.albums.items.map(item => (
+        if (this.props.albums.hasOwnProperty('albums')) {
+            albums = this.props.albums.albums.items.map(item => (
                 <div className="album" key={item.id}>
                     <Album 
                         id={item.id}
@@ -32,7 +31,6 @@ class ResultList extends Component {
             ));
         } else if (JSON.parse(localStorage.getItem("recent")) !== null) { // verifica se existe albuns recentes no localStorage
             var recent = JSON.parse(localStorage.getItem("recent"));
-            console.log("recent -> ", recent);
             albums = recent.map(item => (
                 <div className="album" key={item.id}>
                         <Album 
@@ -54,11 +52,11 @@ class ResultList extends Component {
 }
 
 ResultList.propTypes = {
-    posts: PropTypes.object.isRequired,
+    albums: PropTypes.object.isRequired,
 }
 
 const mapStateToProps = state => ({
-    posts: state.posts.items
+    albums: state.albumReducer.items
 });
 
 export default connect(mapStateToProps, {})(ResultList);
