@@ -17,7 +17,7 @@ class ArtistAlbums extends Component {
         let albums = '', artist = '';
 
         // verifica existe resultados da pesquisa
-        if (this.props.artist_albums.hasOwnProperty('items')) {
+        if (this.props.artist_albums.items) {
             artist = this.props.artist_albums.items[0].artists[0].name;
             albums = this.props.artist_albums.items.map(item => (
                 <div className="album" key={item.id}>

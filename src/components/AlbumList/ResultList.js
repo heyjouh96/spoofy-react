@@ -18,7 +18,7 @@ class ResultList extends Component {
         let albums = '';
 
         // verifica existe resultados da pesquisa
-        if (this.props.albums.hasOwnProperty('albums')) {
+        if (this.props.albums.albums) {
             albums = this.props.albums.albums.items.map(item => (
                 <div className="album" key={item.id}>
                     <Album 
@@ -38,7 +38,7 @@ class ResultList extends Component {
                             name={item.name}
                             image={item.image}
                             artist={item.artist}
-                            artistid={item.artist[0].id} />
+                            artistid={item.artistid} />
                 </div>
             ));
         }

@@ -1,17 +1,11 @@
 const tokenValidation = () => {
     const token = getToken();
 
-    console.log("token ->", token);
-
     if (!token) {
-        console.log("3");
-
         redirectToSpotify();
     } else {
-        console.log("4");
         if (!validateExpireToken(token)) {
             
-            console.log("5");
             redirectToSpotify();
 
         } 
@@ -25,17 +19,11 @@ const extractQueryString = search => {
 }
 
 const getToken = () => {
-    console.log("ENTROU NESSE AQUI")
     var search = window.location.hash.split("#")[1];
 
-    console.log("search -> ", search);
     if (search) {
         // primeiro acesso após autorização, token na url
-        console.log("1");
-        console.log("queryString -> ", extractQueryString(search));
-
         const auth = extractQueryString(search);
-        console.log("authnn ->", auth.access_token);
 
         localStorage.setItem(
             "authorization",
@@ -50,7 +38,6 @@ const getToken = () => {
         return JSON.parse(authorization);
     }
     else {
-        console.log("2");
         const authorization = localStorage.getItem("authorization");
         return JSON.parse(authorization);
     }
@@ -65,16 +52,10 @@ const clearHashToken = () => {
 };
 
 const validateExpireToken = token => {
-    console.log("token validate - ", token);
     const now = new Date();
     const expire = new Date(new Date(token.authorizationTime).setSeconds(token.expires_in));
     
-
-    console.log("now ->", now);
-    console.log("expire ->", expire);
-
     const valid = now <= expire;
-    console.log(valid);
     return valid;
 };
 

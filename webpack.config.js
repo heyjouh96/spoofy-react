@@ -73,7 +73,7 @@ module.exports = () => {
             new webpack.DefinePlugin(envKeys),
             // new CopyWebpackPlugin([
             //     // relative path is from src
-            //     { from: './src/assets/images/favicon.png', to: 'assets/images/favicon.png' }, // <- your path to favicon
+            //     { from: './src/images/logo.png', to: 'images/logo.png' }, // <- your path to favicon
             //   ])
         ]
     }
